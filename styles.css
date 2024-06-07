@@ -169,10 +169,10 @@ main {
 
 .project-card:hover {
     transform: scale(1.05);
-    background-color: rgba(100 , 255 , 218 , 0.5);
+    background-color: rgba(100, 255, 218, 0.5);
 }
 
-.project-card h3 ,
+.project-card h3, 
 .project-card p {
     margin: 0 0 10px 0;
     color: #fff;
@@ -192,12 +192,4 @@ footer {
     color: #ccd6f6;
     text-align: center;
     padding: 20px 0;
-}
-
-section {
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-}
-.hidden {
-    opacity: 0;
-    transform: translateY(20px);
 }
