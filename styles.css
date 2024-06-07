@@ -36,6 +36,25 @@ header nav ul li a:hover {
     color: #64ffda;
 }
 
+@media (min-width: 768px) {
+    header.navbar {
+        top: 0;
+        bottom: auto;
+    }
+}
+
+@media (max-width: 767px) {
+    header.navbar {
+        top: auto;
+        bottom: 0;
+        border-top: 1px solid #0a192f;
+    }
+
+    header.navbar nav ul {
+        justify-content: space-around;
+    }
+}
+
 .dropdown:hover > .dropdown-content {
     display: block; 
 }
@@ -70,6 +89,9 @@ header nav ul li a:hover {
     color: #8a3ab9; /* Instagram icon color */
 }
 
+.dropdown-content a[href="https://leetcode.com/u/mohdkashan21165/"]:hover .cib-leetcode {
+    color: #FFA116;
+}
 
 hr {
     border: 1px solid #64ffda;
@@ -133,6 +155,35 @@ main {
     }
 }
 
+#skills {
+    background-color: #112240;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+#skills h2 {
+    color: #64ffda;
+    margin-bottom: 10px;
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.skills-container a {
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+.skills-container a:hover {
+    transform: scale(1.1);
+}
+
 .projects-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -187,9 +238,39 @@ main {
     text-decoration: underline;
 }
 
+#leetcode {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+#leetcode h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+#leetcode p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+#leetcode canvas {
+    margin-top: 20px;
+}
+
 footer {
     background-color: #0a192f;
     color: #ccd6f6;
     text-align: center;
     padding: 20px 0;
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out , transform 0.6s ease-out;
+}
+
+section:not(.hidden) {
+    opacity: 1;
+    transform: translateY(0);
 }
