@@ -43,18 +43,19 @@ function fetchLeetCodeData(username) {
 
             const ctx = document.getElementById('leetcode-chart').getContext('2d');
             new Chart(ctx, {
-                type: 'pie',
+                type: 'doughnut',
                 data: {
                     labels: Object.keys(leetcodeData.categories),
                     datasets: [{
                         data: Object.values(leetcodeData.categories),
                         backgroundColor: ['#4caf50', '#ffeb3b', '#f44336'],
                         borderColor: '#0a192f',
-                        borderWidth: 1
+                        borderWidth: 3,
                     }]
                 },
                 options: {
                     responsive: true,
+                    cutout: '70%',
                     plugins: {
                         legend: {
                             position: 'top',
@@ -65,6 +66,9 @@ function fetchLeetCodeData(username) {
                                 }
                             }
                         }
+                    },
+                    animation: {
+                        animateRotate: true,
                     }
                 }
             });
@@ -72,12 +76,12 @@ function fetchLeetCodeData(username) {
         .catch(error => console.error('Error fetching LeetCode data:', error));
 }
 
-function isInViewport(element , threshold = 0) {
+function isInViewport(element, threshold = 0) {
     const rect = element.getBoundingClientRect();
     return (
         rect.top >= -threshold &&
         rect.left >= -threshold &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) + threshold&&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) + threshold &&
         rect.right <= (window.innerWidth || document.documentElement.clientWidth) + threshold
     );
 }
@@ -86,12 +90,19 @@ function handleScrollAnimations() {
     const sections = document.querySelectorAll('section');
     const threshold = 75;
     sections.forEach(section => {
-        if (isInViewport(section , threshold)) {
-            section.classList.remove('hidden');
-            section.classList.add('visible');
+        // Exclude the LeetCode section
+        if (section.id !== 'leetcode') {
+            if (isInViewport(section, threshold)) {
+                section.classList.add('visible');
+                section.classList.remove('hidden');
+            } else {
+                section.classList.remove('visible');
+                section.classList.add('hidden');
+            }
         } else {
-            section.classList.add('hidden');
-            section.classList.remove('visible');
+            // Always make LeetCode section visible
+            section.classList.add('visible');
+            section.classList.remove('hidden');
         }
     });
 }
