@@ -84,7 +84,7 @@ function isInViewport(element , threshold = 0) {
 
 function handleScrollAnimations() {
     const sections = document.querySelectorAll('section');
-    const threshold = 100;
+    const threshold = 75;
     sections.forEach(section => {
         if (isInViewport(section , threshold)) {
             section.classList.remove('hidden');
