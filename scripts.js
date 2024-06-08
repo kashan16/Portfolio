@@ -72,23 +72,26 @@ function fetchLeetCodeData(username) {
         .catch(error => console.error('Error fetching LeetCode data:', error));
 }
 
-function isInViewport(element) {
+function isInViewport(element , threshold = 0) {
     const rect = element.getBoundingClientRect();
     return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        rect.top >= -threshold &&
+        rect.left >= -threshold &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) + threshold&&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth) + threshold
     );
 }
 
 function handleScrollAnimations() {
     const sections = document.querySelectorAll('section');
+    const threshold = 100;
     sections.forEach(section => {
-        if (isInViewport(section)) {
+        if (isInViewport(section , threshold)) {
             section.classList.remove('hidden');
+            section.classList.add('visible');
         } else {
             section.classList.add('hidden');
+            section.classList.remove('visible');
         }
     });
 }
