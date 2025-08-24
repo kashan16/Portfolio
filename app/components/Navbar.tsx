@@ -1,10 +1,8 @@
 import Link from 'next/link';
 import { FaTools } from "react-icons/fa";
-import { IoMdContact } from "react-icons/io";
 import { IconType } from 'react-icons/lib';
 import { SiFreelancermap } from "react-icons/si";
 import { SlFolderAlt, SlHome, SlInfo } from "react-icons/sl";
-
 
 interface NavItem {
     name : string;
@@ -18,8 +16,7 @@ const Navbar = () => {
         { name : 'About' , icon : SlInfo , link : '#about'},
         { name : 'Projects' , icon : SlFolderAlt , link : '#projects' },
         { name : 'Freelance' , icon : SiFreelancermap , link : '#freelance'},
-        { name : 'Skills' , icon : FaTools , link : '#link'},
-        { name : 'Contact' , icon : IoMdContact , link : '#contact'},
+        { name : 'Skills' , icon : FaTools , link : '#skills'},
     ]
 
     return (

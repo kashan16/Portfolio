@@ -1,12 +1,16 @@
+"use client"
+
 import { freelanceWork } from "@/utils/freelanceWork"
 import { projects } from "@/utils/projects"
 import { skills } from "@/utils/skills"
-import { Button, Card, Timeline, TimelineBody, TimelineContent, TimelineItem, TimelinePoint, TimelineTime, TimelineTitle } from "flowbite-react"
-import { FaGithub, FaLinkedin, FaNodeJs, FaReact, FaTwitter } from "react-icons/fa"
+import { Button, Card, Label, Modal, ModalBody, ModalHeader, TextInput, Timeline, TimelineBody, TimelineContent, TimelineItem, TimelinePoint, TimelineTime, TimelineTitle } from "flowbite-react"
+import { useState } from "react"
+import { FaGithub, FaLinkedin, FaNodeJs, FaReact } from "react-icons/fa"
 import { FiExternalLink, FiGithub } from "react-icons/fi"
 import { SiFlask, SiTailwindcss, SiTypescript } from "react-icons/si"
 
 const HomePage = () => {
+    const [ openModal , setOpenModal ] = useState(false);
     return (
         <div className="bg-gradient-to-b from-white via-gray-50 to-gray-100 dark:from-black dark:via-gray-900 dark:to-gray-950">
             <div className="flex flex-col justify-center items-center min-h-screen px-6">
@@ -26,11 +30,11 @@ const HomePage = () => {
                             className="min-w-[160px] text-center px-6 py-3 rounded-xl text-white font-medium bg-gradient-to-r from-blue-600 to-teal-500 shadow-lg hover:shadow-xl hover:scale-105 transition">
                                 View Projects
                         </a>
-                        <a 
-                            href="#contact"
+                        <button 
+                            onClick={() => setOpenModal(true)}
                             className="min-w-[160px] text-center px-6 py-3 rounded-xl text-white font-medium bg-gradient-to-r from-blue-600 to-teal-500 shadow-lg hover:shadow-xl hover:scale-105 transition">
                                 Hire me
-                        </a>
+                        </button>
                         <a 
                             href="/resume.pdf"
                             download
@@ -174,17 +178,44 @@ const HomePage = () => {
                         ))}
                     </div>
                 </div>
+                <Modal show={openModal} size="lg" onClose={() => setOpenModal(false)} popup>
+                    <ModalHeader/>
+                    <ModalBody>
+                        <div className="space-y-6">
+                            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                                Let&apos;s Build Something
+                            </h3>
+                            <form className="flex flex-col gap-4">
+                                <div>
+                                    <Label htmlFor="name"/>
+                                    <TextInput id="name" placeholder="John Doe" required/>
+                                </div>
+                                <div>
+                                    <Label htmlFor="email"/>
+                                    <TextInput id="email" type="email" placeholder="John@example.com" required/>
+                                </div>
+                                <div>
+                                    <Label htmlFor="message"/>
+                                    <TextInput id="message" placeholder="Tell me about your project...." required/>
+                                </div>
+                                <Button className="bg-gradient-to-r from-green-400 to-blue-600" type="submit">
+                                    Send Message
+                                </Button>                                                                
+                            </form>
+                            <div className="flex justify-center gap-6 mt-4 text-gray-600 dark:text-gray-300">
+
+                            </div>
+                        </div>
+                    </ModalBody>
+                </Modal>
             </div>
             <footer className="mt-20 border-t border-gray-300 dark:border-gray-700 py-6 text-center">
                 <div className="flex justify-center gap-6 mb-4">
                 <a href="https://github.com/kashan16" target="_blank" rel="noopener noreferrer">
                     <FaGithub className="text-2xl text-gray-600 dark:text-gray-300 hover:text-blue-500 transition" />
                 </a>
-                <a href="https://linkedin.com/in/yourlinkedin" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/mohd-kashan-yunus-0201192a3/" target="_blank" rel="noopener noreferrer">
                     <FaLinkedin className="text-2xl text-gray-600 dark:text-gray-300 hover:text-blue-500 transition" />
-                </a>
-                <a href="https://twitter.com/yourtwitter" target="_blank" rel="noopener noreferrer">
-                    <FaTwitter className="text-2xl text-gray-600 dark:text-gray-300 hover:text-blue-500 transition" />
                 </a>
                 </div>
                 <p className="text-gray-500 dark:text-gray-400 text-sm">
