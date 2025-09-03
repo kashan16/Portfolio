@@ -21,7 +21,7 @@ export const projects = [
     title: "Stryx Compiler",
     description:
       "Custom compiler implemented in C++ with lexer, parser, and semantic analyzer. Designed advanced loop constructs and optimized memory usage by 30% with a custom allocator.",
-    tech: ["C++"],
+    tech: ["C++","Compiler Design"],
     image: "/projects/stryx.png",
     github: "https://github.com/kashan16/Stryx",
     demo: "#",
